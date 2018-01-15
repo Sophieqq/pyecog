@@ -3,90 +3,56 @@
 This module is for detecting epileptiform activity from *single* channel intracranial EEG (or ECoG) recordings.
 Currently under heavy construction!
 
-Use python 3.5, untested and likely (even more) buggy with 2. 
+### Recommended installation procedure:
 
+1. Install [Anaconda](https://www.continuum.io/downloads). Choose the Python 3, 64-bit version for your operating system (Linux, Windows, or OS X). You can also download python 2, but just make sure your python version for the environment is 3 (next step).
 
-
-
-### Recommended installation procedure (using pip):
-1. If using windows first install [Visual studio build tools](http://go.microsoft.com/fwlink/?LinkId=691126)
-2. Install Anaconda. Choose the Python 3 64-bit version for your operating system (Linux, Windows, or OS X).
-  You can also use python 2, but just make sure your python version for the environment is 3. 
-3. Make a new environment and install dependencies: Open a terminal windows (on Windows,a cmd prompt) and type or copy :
+2. Make a new conda environment and install dependencies for pyecog. To do this open a terminal windows (on Windows, a cmd prompt) and type or copy:
     ```{bash}
-    conda create --name pyecog_env python=3.5 jupyter=1 scipy=0.18.1 numpy=1.11.2 scikit-learn=0.17.1 pandas=0.19.2 matplotlib=2 seaborn=0.7.1 h5py=2.6.0 xlrd=1 bokeh=0.12.4 pyqt=5.6
-    source activate pyecog_env  # or just "activate pyecog_env" if on windows
+    conda create --name pyecog_env python=3.5 jupyter=1 scipy=0.18.1 numpy=1.11.2 scikit-learn=0.17.1 pandas=0.19.2 matplotlib=2 seaborn=0.7.1 h5py=2.6.0 xlrd=1 pyqt=5.6
+    source activate pyecog_env  # or just "activate pyecog_env" if you are on windows
     pip install pyqtgraph==0.10
-    pip install pomegranate==0.6.1
-    ```
-    #### WARNING: pomegranate often fails to build properly!
-    To test your installation, try:
-    ```{bash}
-    python
-    >>> import pomegranate
-    ```
-    If you get a following error such as:
-    ```{bash}
-    ImportError: No module named 'pomegranate.utils'
-    # or
-    ImportError: No module named 'pomegranate.kmeans'
-    ```
-    This can be resolved by uninstalling and reinstalling:
-    ```{bash}
-    >>> quit()
-    pip uninstall pomegranate
-    pip install pomegranate --no-cache
-    ```
+   ```
+ * Note you do not have to make a virtual environment if you will not be using python for anything else. See below.
+ 
+3. Click on the green "clone or download" button on the top right of this page. Download the zip file and extract it somewhere on your computer. Navigate to the extracted folder in terminal/cmd line or open a terminal/cmd window at the extracted folder. To do this quickly on windows shift+right click on the folder and select "open a command window here". 
 
-4. Finally, you are ready to run 
-    ```{bash}
-    pip install pyecog
-    python
-    >>> import pyecog
-    >>> pyecog
-    <module 'pyecog' from '//anaconda/envs/pyecog_env/lib/python3.5/site-packages/pyecog/__init__.py'>
-    ```
-    You are free to import pyecog into whichever scripts or jupyter notebooks you wish. The main gui can also be run with:
-    
-    ```
-    >>> pyecog.pyecog_main_gui.main()
-    ```
-
-
-### Recommended procedure for running PyECoG from Github source code:
-1. Follow steps 1 to 3 from above
-2. Download the latest source code from [here](https://github.com/jcornford/pyecog/archive/master.zip) and extract.
-3. Navigate to the folder in terminal/cmd, or open a terminal/cmd window at the extracted folder.
+4. Finally, you are ready to run. First activate your python environment with the required dependencies for the Pyecog gui:
 ```{bash}
-source activate pyecog_env  # or just "activate pyecog_env" if on windows
-python
->>> import pyecog
->>> pyecog
-<module 'pyecog' from 'YOUR-PATH_HERE/pyecog-master/pyecog/__init__.py'>
+activate pyecog_env  # or  "source activate pyecog_env" if on a mac
 ```
-
-Like when installing using pip, you can load up a jupyter notebook or run scripts from here and import the module.
-If you want to run the gui:
+And then run the gui with:
 ```{bash}
-python
->>> pyecog.pyecog_main_gui.main()
+python start.py
 ```
-
-You also have the option to run the gui from command line /terminal:
-
+---
+### For running without an environment:
+Replace step 2 with
+ ```{bash}
+    conda install jupyter=1 scipy=0.18.1 numpy=1.11.2 scikit-learn=0.17.1 pandas=0.19.2 matplotlib=2 seaborn=0.7.1 h5py=2.6.0 xlrd=1 pyqt=5.6
+    pip install pyqtgraph==0.10
+ ```
+ And then do not activate an enviroment before 
+ 
 ```{bash}
-pyecog/visualisation/pyecog_main_gui.py 
+python start.py
 ```
+---
+### Installing with pip:
+This is for when the software is more developed.
 
-### How to use
+1 . After step 2 above, run:
+```{bash}
+pip install pyecog
+```
+2. Ignore step 3. Open command window and activate the pyecog_env environment if you are using it. Type "pyecog" into the prompt. The Gui should load.
+---
+### How to use - this needs to be updated
+- note, some gui elements not implemented (open in jupyter notebook and low pass filter)
 - [Loading ndf files] (https://github.com/jcornford/pyecog/blob/master/documentation_notebooks/demo_loading_ndfs_notebook.ipynb)
-
+---
 ### Repository contents:
-* NDF:          code is the current working directory.
-* light_code:   contains old code. PyECoG was originally "networkclassifer", this is that code, kept for analysing further experiments.
+* NDF:           code is the current working directory.
 * visualisation: contains a bunch of visualisation experiments
-
-ps. maybe pomegranate problems can be solved by:q
-cython-0.25.2 joblib-0.11 networkx-1.11
 
 
