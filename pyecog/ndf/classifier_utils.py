@@ -285,9 +285,9 @@ def make_prediction_dataframe_rows_from_chunk_labels(tid_no, to_stack = [], colu
     # make the Dataframe for predicted seizures
     df_rows = []
     for tup in seizures_idx_tups:
-        name = df.ix[tup[0],columns_list[0]]
-        start_time = df.ix[tup[0],'start_time']
-        end_time = df.ix[tup[1],'end_time']
+        name = df.loc[tup[0],columns_list[0]]
+        start_time = df.loc[tup[0],'start_time']
+        end_time = df.loc[tup[1],'end_time']
         duration = end_time-start_time
         real_start = utils.get_time_from_seconds_and_filepath(name, float(start_time), split_on_underscore = True).round('s')
         real_end   = utils.get_time_from_seconds_and_filepath(name,float(end_time), split_on_underscore = True ).round('s')
