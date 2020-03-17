@@ -12,7 +12,7 @@ http://jcornford.github.io/pyecog/
 2. Make a new conda environment and install dependencies for pyecog. To do this open a terminal windows (on Windows, a cmd prompt) and type or copy:
     ```{bash}
     conda create --name pyecog python=3.7 jupyter=1 scipy=1.4.1 numpy=1.18.1 scikit-learn=0.21.3 pandas=1.0.1 matplotlib=3.1.3 seaborn=0.10.0 h5py=2.10.0 xlrd=1.2.0 pyqt=5.9.2 numba=0.48.0
-    source activate pyecog  # or just "activate pyecog_env" if you are on windows
+    conda activate pyecog  # or just "activate pyecog" if you are on windows
     pip install pyqtgraph
    ```
  * Note you do not have to make a virtual environment if you will not be using python for anything else. See below.
@@ -21,7 +21,7 @@ http://jcornford.github.io/pyecog/
 
 4. Finally, you are ready to run. First activate your python environment with the required dependencies for the Pyecog gui:
 ```{bash}
-activate pyecog  # or  "source activate pyecog_env" if on a mac
+conda activate pyecog  # or  "source activate pyecog" if on a mac
 ```
 And then run the gui with:
 ```{bash}
